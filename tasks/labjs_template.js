@@ -25,12 +25,16 @@ module.exports = function (grunt) {
                 js = dir + f[f.length - 1];
             grunt.log.write('Cued file ' + js + '\n'.grey);
 
-            if (i + 1 === this.data.conf.length) {
-                ar.push("'" + js + "'\n \t \t]);");
-            } else if (i === 0) {
-                ar.push(".script([\n \t \t'" + js + "',\n \t \t");
+            if(this.data.conf.length === 1){
+                ar.push(".script(\n \t \t \t'" + js + "'\n \t \t);");
             } else {
-                ar.push("'" + js + "'," + "\n \t \t")
+                if (i + 1 === this.data.conf.length) {
+                    ar.push("'" + js + "'\n \t \t]);");
+                } else if (i === 0) {
+                    ar.push(".script([\n \t \t'" + js + "',\n \t \t");
+                } else {
+                    ar.push("'" + js + "'," + "\n \t \t")
+                }
             }
         }
         grunt.scripts_config = ar.join('');
