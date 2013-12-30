@@ -1,7 +1,7 @@
 {
   "name": "grunt-labjs-template",
   "description": "Create labjs template",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "homepage": "https://github.com/gruntjs/grunt-labjs-template",
   "author": {
     "name": "Michael Benin",
