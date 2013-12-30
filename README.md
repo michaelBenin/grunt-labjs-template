@@ -43,7 +43,7 @@ grunt.initConfig({
 
 });
 
-grunt.registerTask('default', ['loadJavascript']);
+grunt.registerTask('default', ['labjs_template']);
 
 ```
 

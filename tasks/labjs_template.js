@@ -12,12 +12,16 @@ module.exports = function (grunt) {
     grunt.registerMultiTask('labjs_template', 'labjs script loading file', function () {
         var ar = [];
         this.data.conf = this.data.conf.split(',');
+        grunt.script_dir = this.data.dir;
+
 
         for (var i = 0; i < this.data.conf.length; i++) {
             if (!grunt.file.isFile(this.data.conf[i])) {
                 this.data.conf.splice(i, 1);
+                console.log('Cannot find file: ' + this.data.conf[i]);
             }
         }
+
         for (var i = 0; i < this.data.conf.length; i++) {
             var c = this.data.conf[i],
                 dir = this.data.dir,
@@ -38,7 +42,6 @@ module.exports = function (grunt) {
             }
         }
         grunt.scripts_config = ar.join('');
-        grunt.script_dir = dir;
         var tmpl = grunt.file.read(this.data.src),
             data = grunt.template.process(tmpl);
         grunt.log.write('✔ '.green + 'Successfully templated ' + this.data.src + '\n');
